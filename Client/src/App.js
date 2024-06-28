@@ -3,6 +3,8 @@ import './App.css';
 import Home from './Pages/Home';
 import CreatePage from './Pages/AddBook';
 import ViewBooks from './Pages/ListBooks';
+import EditBooks from './Pages/EditBook';
+
 //import ViewUsers from './Pages/ViewUsers';
 
 
@@ -16,7 +18,9 @@ function App() {
     <Routes>
       <Route path="/" element={<ViewBooks />}/>
      
-        <Route path="create" element={<CreatePage />} />,
+        <Route path="create" element={<CreatePage />} />
+        <Route path="edit/:id" element={<EditBooks />} />,
+
 
       
     </Routes>

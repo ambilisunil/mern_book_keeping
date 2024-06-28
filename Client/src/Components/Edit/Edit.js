@@ -1,10 +1,13 @@
-import React, { Fragment ,useState} from 'react';
+import React, { Fragment ,useState,useEffect} from 'react';
 import {
   useNavigate
 } from "react-router-dom";
 import './Edit.css';
 import Header from '../Header/Header';
 import axios from '../../constents/axios'
+import { useParams } from "react-router-dom";
+
+
 const Edit = () => {
   const [title,setTitle]=useState('');
   const [author,setAuthor]=useState('');
@@ -12,25 +15,40 @@ const Edit = () => {
   const [index,setIndex]=useState('');
   const [category,setcategory]=useState('');
   const [otherDetails,setOtherDetails]=useState('');
+  const { id } = useParams();
+  console.log({id})
+  useEffect(() => {
+    axios({
+      method: "get",
+      url: `view/${id}`,
+    }).then(function (response) {
+      if (response.data.statusCode === 200) {
+        console.log(response.data)
+        if(response.data.book){
+          setTitle(response.data.book.title)
+          setAuthor(response.data.book.author)
+          setPublisher(response.data.book.publisher)
+          setIndex(response.data.book.index)
+          setcategory(response.data.book.category)
+          setOtherDetails(response.data.book.otherDetails)
 
+        }
+      }
+    });
+  }, []);
 
-
- //const history=useNavigate();
   const handleSubmit=(e)=>{
     e.preventDefault();
-    
+    console.log({id})
+
 
   axios({
-      method: 'post',
-      url: 'add',
+      method: 'patch',
+      url: `update/${id}`,
       data: 
         {title,author,publisher,index,category,otherDetails},
-      
-     
-      
     })
     .then(function (response) {
-      console.log(response);
     })
   }
   return (
@@ -112,7 +130,7 @@ const Edit = () => {
             />
             <br />
            
-            <button>Add Book</button>
+            <button>Update Book</button>
           </form>
         </div>
       </card>
@@ -120,4 +138,4 @@ const Edit = () => {
   );
 };
 
-export default Create;
+export default Edit;

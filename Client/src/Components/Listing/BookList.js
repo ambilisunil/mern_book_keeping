@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import {
-  Link
+  Link,useNavigate
 } from "react-router-dom";
+
 import axios from '../../constents/axios'
 import { Context } from '../../constents/Context'
 import './Book.css'
@@ -10,15 +11,16 @@ import Form from 'react-bootstrap/Form';
 
 import Alert from 'react-bootstrap/Alert';
 
+
 function View() {
   const [books, setBooks] = useState([]);
+  const navigate = useNavigate()
 
   useEffect(() => {
     axios({
       method: "get",
       url: "list",
     }).then(function (response) {
-      console.log("hjgjgy")
       if (response.data.statusCode === 200) {
         setBooks(response.data.books);
         console.log(response.data)
@@ -74,8 +76,13 @@ function View() {
   const bookView = (id) => {
 
   }
+  const Edit = (id) => {
+  
+      navigate(`/edit/${id}`);
+    }
 
   return (
+    
 
     <div className="viewParentDivBook">
  
@@ -124,7 +131,7 @@ function View() {
               <td>{book.otherDetails}</td>
 
               <td>
-                <button onClick={() => { bookView(book._id) }}>View And Edit</button>
+                <button onClick={() =>  Edit(book._id) }>View And Edit</button>
 
 
                 <button style={{ color: 'white', backgroundColor: 'red' }} onClick={() => { if (window.confirm('Delete this book?')) { bookDelete(book._id) }; }}>Delete</button>
