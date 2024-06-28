@@ -16,6 +16,8 @@ const Edit = () => {
   const [category,setcategory]=useState('');
   const [otherDetails,setOtherDetails]=useState('');
   const { id } = useParams();
+  const [message, setMessage] = useState(null);
+
   console.log({id})
   useEffect(() => {
     axios({
@@ -39,7 +41,6 @@ const Edit = () => {
 
   const handleSubmit=(e)=>{
     e.preventDefault();
-    console.log({id})
 
 
   axios({
@@ -48,7 +49,9 @@ const Edit = () => {
       data: 
         {title,author,publisher,index,category,otherDetails},
     })
-    .then(function (response) {
+    .then(res => {
+      setMessage("Updated");
+
     })
   }
   return (
@@ -131,6 +134,8 @@ const Edit = () => {
             <br />
            
             <button>Update Book</button>
+            {message && <div>{message}</div>}
+
           </form>
         </div>
       </card>
