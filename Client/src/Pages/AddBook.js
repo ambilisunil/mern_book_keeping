@@ -1,11 +1,17 @@
 import React, { Fragment } from 'react';
+import Header from '../Components/Header/Header'
+import Footer from '../Components/Footer/Footer'
 
 import Create from '../Components/Add/addBook';
 
 const CreatePage = () => {
   return (
-    
-      <Create/>
+    <div>
+        <Header/>
+        <Create/>
+        <Footer/>
+    </div>
+  
   );
 };
 

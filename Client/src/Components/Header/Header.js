@@ -1,38 +1,26 @@
 import React, { useContext } from 'react';
-
-import {
-  Link,BrowserRouter, Routes, Route 
-} from "react-router-dom";
-
-import './Header.css';
-
-
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
 function Header() {
 
-  //const history ();
 
   return (
+
     <div>
-      <h1>Personal Book Keeping</h1>
-      <div className="headerParentDiv">
+      <Container>
+        <h1>Personal Book Keeping</h1>
 
-
-        <ul>
-
-          <div className="lgd">
-            <li color='white'> 
-
-            <Link to="/create" className="btn btn-primary">ADD</Link>
-            <Link to="/" className="btn btn-primary">Home</Link>
-
-            </li>
-          </div>:
-
-
-        </ul>
-
-
-      </div></div>
+        <Navbar expand="lg" className="bg-body-tertiary">
+          
+          <Container>
+            <Navbar.Brand href="/">Home</Navbar.Brand>
+          </Container>
+          <Container>
+            <Navbar.Brand href="/create">ADD</Navbar.Brand>
+          </Container>
+        </Navbar>
+      </Container>
+    </div>
   );
 }
 

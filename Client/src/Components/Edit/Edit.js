@@ -1,13 +1,10 @@
 import React, { Fragment ,useState,useEffect} from 'react';
-import {
-  useNavigate
-} from "react-router-dom";
-import './Edit.css';
-import Header from '../Header/Header';
+import { useParams, useNavigate} from "react-router-dom";
 import axios from '../../constents/axios'
-import { useParams } from "react-router-dom";
 
-
+//import Form from 'react-bootstrap/Form';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Form, InputGroup, Row, Button } from 'react-bootstrap';
 const Edit = () => {
   const [title,setTitle]=useState('');
   const [author,setAuthor]=useState('');
@@ -17,8 +14,8 @@ const Edit = () => {
   const [otherDetails,setOtherDetails]=useState('');
   const { id } = useParams();
   const [message, setMessage] = useState(null);
+  const navigate = useNavigate()
 
-  console.log({id})
   useEffect(() => {
     axios({
       method: "get",
@@ -50,95 +47,77 @@ const Edit = () => {
         {title,author,publisher,index,category,otherDetails},
     })
     .then(res => {
+      alert(res.data.message)
+
       setMessage("Updated");
 
     })
   }
+
+  const goBack=()=>{
+
+    navigate(-1);
+
+  }
   return (
     <Fragment>
-      <Header />
-      <card>
-        <div className="centerDiv">
-        <form onSubmit={handleSubmit}> 
-            <label htmlFor="fname">Book Name</label>
-            <br />
-            <input
-              className="input"
-              type="text"
-              id="fname"
-              name="Title"
-              value={title}
-              onChange={(e)=>setTitle(e.target.value)}
-            />
-            <br />
-            <label htmlFor="fname">Author Name</label>
-            <br />
-            <input
-              className="input"
-              type="textArea"
-              id="fname"
-              name="Author"
-              value={author}
-              onChange={(e)=>setAuthor(e.target.value)}
-             
-            />
-            <br />
+                <button onClick={(e)=>goBack(e)} className="btn btn-light">Go Back</button>
 
-            <label htmlFor="fname">Publisher</label>
-            <br />
-            <input
-              className="input"
-              type="textArea"
-              id="fname"
-              name="Publisher"
-              value={publisher}
-              onChange={(e)=>setPublisher(e.target.value)}
-             
-            />
-            <br />
+          <div className="centerDiv">
 
-            <label htmlFor="fname">Category</label>
-            <br />
-            <input
-              className="input"
-              type="textArea"
-              id="fname"
-              name="Category"
-              value={category}
-              onChange={(e)=>setcategory(e.target.value)}
-             
-            />
-            <br />
-            <label htmlFor="fname">Other Details</label>
-            <br />
-            <input
-              className="input"
-              type="textArea"
-              id="fname"
-              name="otherDetails"
-              value={otherDetails}
-              onChange={(e)=>setOtherDetails(e.target.value)}
-             
-            />
-            <br /> <label htmlFor="fname">Serial Number</label>
-            <br />
-            <input
-              className="input"
-              type="textArea"
-              id="fname"
-              name="index"
-              value={index}
-              onChange={(e)=>setIndex(e.target.value)}
-             
-            />
-            <br />
-           
-            <button>Update Book</button>
+    <form className="container mt-3 mb-3">
+
+
+    <Row className="mb-3">
+   
+        <Form.Group className=" col col-sm-6" >
+            <Form.Label>Name</Form.Label>
+            <Form.Control className="form-control" type="text" name="address1" value={title} onChange={(e)=>setTitle(e.target.value)} />
+        </Form.Group>
+        <Form.Group className="col col-sm-6" controlId="formGridAddress2">
+            <Form.Label>Author</Form.Label>
+            <Form.Control className="form-control" name="address2"  value={author}
+              onChange={(e)=>setAuthor(e.target.value)} type="text" />
+        </Form.Group>
+        
+    </Row>
+    <Row className="mb-3">
+    <Form.Group controlId="" className="col col-sm-4">
+            <Form.Label>Publisher</Form.Label>
+            <Form.Control className="form-control" type="text" name="publisher"  value={publisher}
+              onChange={(e)=>setPublisher(e.target.value)} />
+        </Form.Group>
+        <Form.Group controlId="" className="col col-sm-4">
+            <Form.Label>Category</Form.Label>
+            <Form.Control className="form-control" type="text" name="category"  value={category}
+              onChange={(e)=>setcategory(e.target.value)} />
+        </Form.Group>
+        <Form.Group className=" col col-sm-4" >
+            <Form.Label>Index</Form.Label>
+            <Form.Control className="form-control" type="text" name="index" value={index} onChange={(e)=>setIndex(e.target.index)} />
+        </Form.Group>
+       
+    </Row>
+    <Row className="mb-3">
+    
+        <Form.Group controlId="" className="">
+            <Form.Label>Other Details</Form.Label>
+            <Form.Control as="textarea" rows="{3}" className="form-control" name="otherdetails"   value={otherDetails}
+              onChange={(e)=>setOtherDetails(e.target.value)}/>
+        </Form.Group>
+    </Row>
+    <Row className="mb-3">
+        <Form.Group controlId="" className="col col-sm-6">
+            <button type="submit" onClick={handleSubmit}className="me-4 btn btn-success btn-lg btn-block">Update</button>
             {message && <div>{message}</div>}
 
-          </form>
-        </div>
-      </card>
+        </Form.Group>
+    </Row>
+</form>
+      <div>
+     </div>   
+        
+      </div>
     </Fragment>
   );
 };

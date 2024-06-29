@@ -10,9 +10,7 @@ function Home(props) {
   return (
     <div className="homeParentDiv">
       <Header />
-      <AddBook/>
       
-      <br></br><br></br><br></br><br></br> <br></br> <br></br><br></br><br></br><br></br>
     <Footer/>
     </div>
   );

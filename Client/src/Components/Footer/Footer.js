@@ -1,19 +1,21 @@
 import React from 'react';
 
-import './Footer.css';
+//import './Foter.css';
 
 function Footer() {
   return (
     <div className="footerParentDiv">
-      <div className="content">
 
-        <li>TRACK PERSONAL BOOK COLLECTION</li>
+      <footer className="page-footer font-small blue pt-4">
 
-      </div>
-      <div className="footer">
+        <div className="footer-copyright text-center py-3">   TRACK PERSONAL BOOK COLLECTION
 
-        <p> © Ambili Sunil</p>
-      </div>
+          © 2024 Copyright :
+          <a href="ambilisunil11998@gmail.com"> Ambili Suni</a>
+        </div>
+
+      </footer>
+
     </div>
   );
 }

@@ -12,7 +12,7 @@ exports.create_book = async function (req, res) {
     const book = new Book(req.body);
 
         await book.save();
-        res.status(201).send({ statusCode: 201, Book });
+        res.status(201).send({ statusCode: 201, Book,message:"Book added" });
   } catch (e) {
     console.log(e)
     res.status(400).send({ statusCode: 400, error: e });
