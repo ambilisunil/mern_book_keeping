@@ -111,15 +111,15 @@ function View() {
                   <tr >
                     <td>{book.index}</td>
 
-                    <td>{book.title
-                    }<br></br>
+                    <td><button style={{ color: 'blue', border: 'none' }} onClick={() => Edit(book._id)}> {book.title
+                    }</button>
                     </td>
                     <td>{book.author}</td>
                     <td>{book.publisher}</td>
                     <td>{book.category}</td>
                     <td>{book.otherDetails}</td>
                     <td>
-                      <button onClick={() => Edit(book._id)}> Edit</button>
+                      
                       <button style={{ color: 'white', backgroundColor: 'red' }} onClick={() => { if (window.confirm('Delete this book?')) { bookDelete(book._id) }; }}>Delete</button>
 
                     </td>
