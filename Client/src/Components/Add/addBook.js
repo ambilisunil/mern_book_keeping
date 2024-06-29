@@ -40,18 +40,18 @@ const Create = () => {
       
       <card>
         <div className="centerDiv">
-        <form className="container mt-3 mb-3">
+        <form onSubmit={handleSubmit} className="container mt-3 mb-3">
 
 
 <Row className="mb-3">
 
     <Form.Group className=" col col-sm-6" >
         <Form.Label>Name</Form.Label>
-        <Form.Control className="form-control" type="text" name="address1" value={title} onChange={(e)=>setTitle(e.target.value)} />
+        <Form.Control required className="form-control" type="text" name="address1" value={title} onChange={(e)=>setTitle(e.target.value)} />
     </Form.Group>
     <Form.Group className="col col-sm-6" controlId="formGridAddress2">
         <Form.Label>Author</Form.Label>
-        <Form.Control className="form-control" name="address2"  value={author}
+        <Form.Control className="form-control" name="address2"  value={author}required
           onChange={(e)=>setAuthor(e.target.value)} type="text" />
     </Form.Group>
     
@@ -59,17 +59,17 @@ const Create = () => {
 <Row className="mb-3">
 <Form.Group controlId="" className="col col-sm-4">
         <Form.Label>Publisher</Form.Label>
-        <Form.Control className="form-control" type="text" name="publisher"  value={publisher}
+        <Form.Control required className="form-control" type="text" name="publisher"  value={publisher}
           onChange={(e)=>setPublisher(e.target.value)} />
     </Form.Group>
     <Form.Group controlId="" className="col col-sm-4">
         <Form.Label>Category</Form.Label>
-        <Form.Control className="form-control" type="text" name="category"  value={category}
+        <Form.Control  required className="form-control" type="text" name="category"  value={category}
           onChange={(e)=>setcategory(e.target.value)} />
     </Form.Group>
     <Form.Group className=" col col-sm-4" >
         <Form.Label>Index</Form.Label>
-        <Form.Control className="form-control" type="text" name="index" value={index} onChange={(e)=>setIndex(e.target.index)} />
+        <Form.Control required className="form-control" type="text" name="index" value={index} onChange={(e)=>setIndex(e.target.index)} />
     </Form.Group>
    
 </Row>
@@ -83,7 +83,7 @@ const Create = () => {
 </Row>
 <Row className="mb-3">
     <Form.Group controlId="" className="col col-sm-6">
-        <button type="submit" onClick={handleSubmit}className="me-4 btn btn-success btn-lg btn-block">ADD</button>
+        <button type="submit" className="me-4 btn btn-success btn-lg btn-block">ADD</button>
 
     </Form.Group>
 </Row>

@@ -65,7 +65,7 @@ const Edit = () => {
 
           <div className="centerDiv">
 
-    <form className="container mt-3 mb-3">
+    <form onSubmit={handleSubmit} className="container mt-3 mb-3">
 
 
     <Row className="mb-3">
@@ -108,7 +108,7 @@ const Edit = () => {
     </Row>
     <Row className="mb-3">
         <Form.Group controlId="" className="col col-sm-6">
-            <button type="submit" onClick={handleSubmit}className="me-4 btn btn-success btn-lg btn-block">Update</button>
+            <button type="submit" lassName="me-4 btn btn-success btn-lg btn-block">Update</button>
             {message && <div>{message}</div>}
 
         </Form.Group>
