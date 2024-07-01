@@ -1,6 +1,6 @@
 import React, { Fragment ,useState,useEffect} from 'react';
 import { useParams, useNavigate} from "react-router-dom";
-import axios from '../../constents/axios'
+import axios from '../../../constents/axios'
 
 //import Form from 'react-bootstrap/Form';
 import 'bootstrap/dist/css/bootstrap.min.css';

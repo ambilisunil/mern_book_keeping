@@ -5,21 +5,29 @@ import CreatePage from './Pages/AddBook';
 import ViewBooks from './Pages/ListBooks';
 import EditBooks from './Pages/EditBook';
 
+
 //import ViewUsers from './Pages/ViewUsers';
 
 
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState , useEffect} from "react";
 
 
 function App() {
+ 
+
   return (
     <BrowserRouter>
     <Routes>
-      <Route path="/" element={<ViewBooks />}/>
-     
+      <Route path="/" 
+                element={localStorage?.user ? <ViewBooks/> : <Home />}
+
+/>     
         <Route path="create" element={<CreatePage />} />
-        <Route path="edit/:id" element={<EditBooks />} />,
+        <Route path="edit/:id" element={<EditBooks />} />
+        <Route path="reg" element={<Home />} />
+        ,
 
 
       

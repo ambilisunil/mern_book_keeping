@@ -3,7 +3,7 @@ import {
    useNavigate
 } from "react-router-dom";
 
-import axios from '../../constents/axios'
+import axios from '../../../constents/axios'
 import Form from 'react-bootstrap/Form';
 
 import Alert from 'react-bootstrap/Alert';

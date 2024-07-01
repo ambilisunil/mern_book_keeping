@@ -3,8 +3,8 @@ import {
   useNavigate
 } from "react-router-dom";
 //import './Create.css';
-import Header from '../Header/Header';
-import axios from '../../constents/axios'
+import Header from '../../Header/Header';
+import axios from '../../../constents/axios'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Form, InputGroup, Row, Button } from 'react-bootstrap';
 const Create = () => {

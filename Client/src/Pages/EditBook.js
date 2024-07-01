@@ -1,5 +1,5 @@
 
-import Edit from '../Components/Edit/Edit';
+import Edit from '../Components/Books/Edit/Edit';
 
 const CreatePage = () => {
   return (

@@ -1,11 +1,15 @@
+
 const express = require("express");
 const mongoose = require("mongoose");
-const booklRoute = require("./routers/bookrouter");
+require("dotenv/config"); // configure reading from .env
 
-var  uri="mongodb://localhost:27017/Book"
-var bodyParser = require('body-parser');
+const jwt = require("jsonwebtoken");
 var cors = require('cors')
 
+var  uri =process.env.MONGOURL
+var bodyParser = require('body-parser');
+
+const booklRoute = require("./routers/index");
 
 
 mongoose.connect(uri, {
@@ -18,6 +22,7 @@ const connection = mongoose.connection;
 connection.once("open", function () {
   console.log("MongoDB database connection established successfully");
 });
+
 
 const app = express();
 app.use(bodyParser.json());
