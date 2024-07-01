@@ -4,15 +4,21 @@
   "description": "manage personal book collection",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+   "start": "node index.js",
+    "dev": "nodemon server.js"
+  
   },
   "author": "ambili sunil",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
-    "express": "^4.17.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "google-auth-library": "^9.11.0",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^5.13.7",
+    "nodemon": "^3.1.4",
     "regex-escape": "^3.4.10"
   }
 }
