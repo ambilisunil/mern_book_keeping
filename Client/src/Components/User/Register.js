@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import useFetch from "../../Hooks/useFetch";
 import axios from '../../constents/axios'
-
 // https://developers.google.com/identity/gsi/web/reference/js-reference
+import background from '../../images/w.jpeg';
 
 const SignUp = () => {
   const { handleGoogle, loading, error } = useFetch(
@@ -32,10 +32,15 @@ const SignUp = () => {
 
   return (
     <>
-      <nav style={{ padding: "2rem" }}>
+    <div style={{ backgroundImage: `url(${background})` , backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    height:'100vh',
+    width:'100vw'}}>
+    <nav style={{ padding: "2rem" }}>
         <Link to="/">Go Back</Link>
       </nav>
-      <header style={{ textAlign: "center" }}>
+      <header style={{ textAlign: "center", color:"white"}}>
         <h1>Register to continue</h1>
       </header>
       <main
@@ -54,6 +59,7 @@ const SignUp = () => {
         )}
       </main>
       <footer></footer>
+      </div>
     </>
   );
 };
