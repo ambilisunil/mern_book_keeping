@@ -8,6 +8,11 @@ const bookSchema = new mongoose.Schema(
       trim: true,
       uppercase: true,
     },
+    userId: {
+      type: String,
+
+    },
+    
     
     author: {
       type: String,

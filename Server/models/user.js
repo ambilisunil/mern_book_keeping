@@ -18,8 +18,8 @@ const userSchema = new mongoose.Schema(
 
     },
     emailId: {
-      type: Number,
-      uppercase: true,
+      type: String,
+      unique:true
     },
     phoneNumber: {
       type: String,

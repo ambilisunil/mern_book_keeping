@@ -18,6 +18,10 @@ function View() {
     axios({
       method: "get",
       url: "list",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem("token")
+    },
     }).then(function (response) {
       if (response.data.statusCode === 200) {
         setBooks(response.data.books);
@@ -30,13 +34,21 @@ function View() {
   const bookDelete = (id) => {
     axios({
       method: 'delete',
-      url: "delete/" + id
+      url: "delete/" + id,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem("token")
+    },
     })
       .then(function (response) {
         if (response.data.statusCode === 200) {
           axios({
             method: "get",
             url: "list",
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': localStorage.getItem("token")
+          },
           }).then(function (response) {
 
             if (response.data.statusCode === 200) {
@@ -60,6 +72,10 @@ function View() {
       axios({
         method: "get",
         url: "list?q=" + e.target.value?.toUpperCase(),
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': localStorage.getItem("token")
+      },
       }).then(function (response) {
         if (response.data.statusCode === 200) {
           setBooks(response.data.books);
