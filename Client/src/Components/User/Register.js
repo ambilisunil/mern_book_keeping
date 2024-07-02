@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import { Link } from "react-router-dom";
 import useFetch from "../../Hooks/useFetch";
 import axios from '../../constents/axios'
@@ -6,42 +6,73 @@ import axios from '../../constents/axios'
 import background from '../../images/w.jpeg';
 
 const SignUp = () => {
-  const { handleGoogle, loading, error } = useFetch(
-    "http://localhost:4000/user/signup"
-  );
+  const [loading, setLoading] = useState(false);
+const [error, setError] = useState("");
+  // const { handleGoogle, loading, error } = useFetch(
+  //   "http://localhost:4000/user/login"
+  // );
+
+  const googleSignUp=(response)=>{
+    //  e.preventDefault();
+      
+  
+    axios({
+        method: 'post',
+        url: 'user/login',
+        data: { credential: response.credential },
+        
+      })
+      .then((res) => {
+        console.log(res)
+        if (res.data?.user) {
+          localStorage.setItem("user", JSON.stringify(res.data?.user));
+          localStorage.setItem("token", (res.data?.user.token));
+
+          window.location.reload();
+        }
+        throw new Error(res.data?.message || res);
+
+      })
+     
+      .catch((error) => {
+        setError(error?.message);
+      });
+    }
 
   useEffect(() => {
     /* global google */
     if (window.google) {
       google.accounts.id.initialize({
         client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
-        callback: handleGoogle,
+        callback: googleSignUp,
       });
 
       google.accounts.id.renderButton(document.getElementById("signUpDiv"), {
-        // type: "standard",
-        theme: "filled_black",
-        // size: "small",
+         type: "standard",
+        theme: "filled_white",
         text: "continue_with",
         shape: "pill",
+        theme: "outline",
+        size: "large",
+       
       });
 
       // google.accounts.id.prompt()
     }
-  }, [handleGoogle]);
+  }, [googleSignUp]);
 
   return (
     <>
     <div style={{ backgroundImage: `url(${background})` , backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
-    height:'100vh',
+    height:'75vh',
     width:'100vw'}}>
     <nav style={{ padding: "2rem" }}>
         <Link to="/">Go Back</Link>
       </nav>
       <header style={{ textAlign: "center", color:"white"}}>
-        <h1>Register to continue</h1>
+        <h1>Personal Book Catalog</h1>
       </header>
       <main
         style={{

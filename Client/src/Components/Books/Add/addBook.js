@@ -19,7 +19,7 @@ const Create = () => {
 
  //const history=useNavigate();
   const handleSubmit=(e)=>{
-  //  e.preventDefault();
+    e.preventDefault();
     
 
   axios({
@@ -27,12 +27,16 @@ const Create = () => {
       url: 'add',
       data: 
         {title,author,publisher,index,category,otherDetails},
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': localStorage.getItem("token")
+      },
       
      
       
     })
     .then(function (response) {
-      alert(response.data.message)
+      alert("Book added")
     })
   }
   return (

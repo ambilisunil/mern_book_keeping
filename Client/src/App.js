@@ -15,8 +15,20 @@ import { useState , useEffect} from "react";
 
 
 function App() {
- 
+  const [user, setUser] = useState({});
 
+  useEffect(() => {
+    console.log({user})
+    const theUser = localStorage.getItem("user");
+
+    if (theUser && !theUser.includes("undefined")) {
+      console.log("ooooooooo",{user})
+
+      setUser(theUser);
+      console.log("ohhhhhhhhhhhhdfc",{user})
+
+    }
+  }, []);
   return (
     <BrowserRouter>
     <Routes>

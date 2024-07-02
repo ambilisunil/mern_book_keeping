@@ -20,6 +20,10 @@ const Edit = () => {
     axios({
       method: "get",
       url: `view/${id}`,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem("token")
+    },
     }).then(function (response) {
       if (response.data.statusCode === 200) {
         console.log(response.data)
@@ -45,6 +49,10 @@ const Edit = () => {
       url: `update/${id}`,
       data: 
         {title,author,publisher,index,category,otherDetails},
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': localStorage.getItem("token")
+      },
     })
     .then(res => {
       alert(res.data.message)
